@@ -8,8 +8,8 @@ import (
 
 	"github.com/infracost/infracost/pkg/schema"
 
-	"github.com/tidwall/gjson"
 	log "github.com/sirupsen/logrus"
+	"github.com/tidwall/gjson"
 )
 
 // These show differently in the plan JSON for Terraform 0.12 and 0.13
@@ -138,7 +138,7 @@ func parseReferences(resData map[string]*schema.ResourceData, conf gjson.Result)
 
 				// if there's a count ref value then try with the array index of the count ref
 				if !ok && containsString(refs, "count.index") {
-					a := fmt.Sprintf("%s[%d]", refAddr, addressCountIndex(addr))	
+					a := fmt.Sprintf("%s[%d]", refAddr, addressCountIndex(addr))
 					refData, ok = resData[a]
 					if ok {
 						log.Debugf("reference specifies a count: using resource %s for %s.%s", a, addr, attr)
