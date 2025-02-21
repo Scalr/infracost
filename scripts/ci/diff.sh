@@ -322,8 +322,8 @@ else
 fi
 
 if [ ! -z "$GITHUB_ACTIONS" ]; then
-  echo "::set-output name=past_total_monthly_cost::$past_total_monthly_cost"
-  echo "::set-output name=total_monthly_cost::$total_monthly_cost"
+  echo "past_total_monthly_cost=$past_total_monthly_cost" >> $GITHUB_OUTPUT
+  echo "total_monthly_cost=$total_monthly_cost" >> $GITHUB_OUTPUT
   post_to_github
 elif [ ! -z "$GITLAB_CI" ]; then
   post_to_gitlab
